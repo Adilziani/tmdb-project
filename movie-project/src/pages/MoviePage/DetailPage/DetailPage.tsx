@@ -20,10 +20,15 @@ const DetailPage: React.FC<DetailPageProps> = ({movies}: DetailPageProps) => {
     }
     return (
         <div>
-            <img className="search-poster" src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} />
-            <img className="search-poster" src={"http://image.tmdb.org/t/p/w500" + movie.backdrop_path} />
-            <div>{movie.overview}</div>
-            <div>{movie.original_title}</div>      
+            <img className="backdrop" src={"http://image.tmdb.org/t/p/w500" + movie.backdrop_path} />
+            <div style={{display: 'flex', flexDirection: 'row', marginTop: 500, marginLeft: 50}}>
+                <img className="poster" src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} />
+                    <div style={{display: 'flex', flexDirection: 'column', width: 500, marginLeft: 100, fontSize: 20}}>
+                        <div style={{color: 'white'}}>{movie.overview}</div>
+                        <div style={{color: 'white'}}>{movie.release_date}</div>
+                        <div style={{color: 'white'}}>{movie.original_title}</div> 
+                    </div>
+            </div>     
         </div>
     )
 }
