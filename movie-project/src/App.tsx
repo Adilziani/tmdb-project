@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import MovieRow from './Movies/MovieRow'
 import Movies from './Movies/Movies'
@@ -20,12 +21,14 @@ function App() {
   const [misteryMovies, setMisteryMovies] = useState<Array<Movie>>([])
   const [topRatedMovies, setTopRatedMovies] = useState<Array<Movie>>([])
   const [upcomingMovies, setUpcomingMovies] = useState<Array<Movie>>([])
+  const [videoKey, setVideoKey] = useState<string>('')
 
   useEffect(() => {
+    
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=ff5e13ddef3a25f21a4115473c46bbbb&with_genres=27')
     .then(response => response.json())
     .then(json => setHorrorMovies(json.results))
-
+    
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=ff5e13ddef3a25f21a4115473c46bbbb&with_genres=35')
     .then(response => response.json())
     .then(json => setComedyMovies(json.results))
@@ -53,8 +56,15 @@ function App() {
     fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ff5e13ddef3a25f21a4115473c46bbbb&language=en-US&page=1')
     .then(response => response.json())
     .then(json => setUpcomingMovies(json.results))
+
+    fetch('https://api.themoviedb.org/3/movie/675445/videos?api_key=ff5e13ddef3a25f21a4115473c46bbbb&language=en-US')
+    .then(response => response.json())
+    .then(json => json.results.map((key: Movie) => {
+      setVideoKey(key.key)
+    }))
   }, [])
-  
+  console.log(videoKey)
+
   const data = {
     horror: horrorMovies,
     comedy: comedyMovies,
@@ -74,7 +84,7 @@ function App() {
     ...crimeMovies,
     ...misteryMovies,
     ...upcomingMovies,
-    ...topRatedMovies
+    ...topRatedMovies,
   ]
   return (
       <BrowserRouter>
@@ -91,7 +101,7 @@ function App() {
               <HomePage data={data}  />
             </Route>
             <Route path="/detail/:id">
-             <DetailPage movies={movies} poster={''} backdrop={''}/>
+             <DetailPage movies={movies} poster={''} backdrop={''} key={''}  />
             </Route>
             <Route path="/search/:id">
               <SearchPage movies={movies} id={''} title={''} poster={''} />
@@ -100,7 +110,8 @@ function App() {
         </div>
         </div>
       </div>
-      </BrowserRouter>
+      <Footer />
+    </BrowserRouter>
   );
 }
 export default App;

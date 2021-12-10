@@ -18,11 +18,11 @@ interface HomePageProps {
 const HomePage = (props: HomePageProps) => {
     return (
         <div>
-            <MovieRow movies={props.data.horror} title={'Horror Movies'} />
-            <MovieRow movies={props.data.action} title={'Action Movies'} />
-            <MovieRow movies={props.data.romance} title={'Romance Movies'} />
-            <MovieRow movies={props.data.crime} title={'Crime Movies'} />
-            <MovieRow movies={props.data.mistery} title={'Mistery Movies'} />
+            <MovieRow movies={props.data.horror}   title={'Horror Movies'} />
+            <MovieRow movies={props.data.action}   title={'Action Movies'} />
+            <MovieRow movies={props.data.romance}  title={'Romance Movies'} />
+            <MovieRow movies={props.data.crime}    title={'Crime Movies'} />
+            <MovieRow movies={props.data.mistery}  title={'Mistery Movies'} />
             <MovieRow movies={props.data.upComing} title={'Upcoming Movies'} />
             <MovieRow movies={props.data.topRated} title={'Top Rated Movies'} />
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MoviePoster from "../../Movies/MoviePoster";
 import { Movie } from "../../Types/types";
 import SearchPoster from "./SearchPoster";
@@ -11,7 +11,7 @@ interface SearchPageProps {
     movies: Array<Movie>
     id: string;
     title: string;
-    poster: string
+    poster: string;
 }
 const SearchPage = (props: SearchPageProps) => {
   const { id } = useParams<ParamTypes>();
@@ -35,7 +35,8 @@ const SearchPage = (props: SearchPageProps) => {
       {search.map((props) => {
         return (
           <div className="flex-container">
-            <img className="search-poster" src={"http://image.tmdb.org/t/p/w500" + props.poster_path} />
+            <Link to={`/detail/${props.id}`}><img className="search-poster"  src={"http://image.tmdb.org/t/p/w500/" + props.poster_path} alt="" />
+            </Link>
             <div className="search-description">
               <h1>{props.title} </h1>
               <h4>{props.release_date}</h4>

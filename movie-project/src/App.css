@@ -66,6 +66,7 @@ ul .animation {
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
   list-style-type:none;
+  margin-top: 5px;
 }
 
 li a {
@@ -132,6 +133,7 @@ ul .start-movies, a:nth-child(2):hover~.animation {
   width: 50%;
   padding-top: 30px;
   color: white;
+  margin-left: 350px;
 }
 
 .flex-container {

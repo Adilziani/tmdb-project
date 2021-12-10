@@ -5,7 +5,8 @@ interface MoviePosterProps {
 
 }
 
-const MoviePoster: React.FC<MoviePosterProps> = (props) => {
+const MoviePoster: React.FC<MoviePosterProps> = (props: MoviePosterProps) => {
+
     return (
         <div>
             <img className="poster" src={"http://image.tmdb.org/t/p/w500/" + props.poster} alt="" />   

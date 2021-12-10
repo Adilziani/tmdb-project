@@ -10,7 +10,9 @@ import {
 const Header = () => {
     return (
         <div className="container-header">
-            <img className="header" src="/assets/logo.PNG" alt="Logo"/>
+            <NavLink exact to="/">
+                <img className="header" src="/assets/logo.PNG" alt="Logo"/>
+            </NavLink>
             <ul className="ul-nav">
                 <li className="li-nav">
                     <NavLink exact to="/" activeClassName={styles.activeLink}>Home</NavLink>

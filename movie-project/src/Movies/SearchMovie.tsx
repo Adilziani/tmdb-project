@@ -12,8 +12,7 @@ const SearchMovie = () => {
         .then(response => response.json())
         .then(json => setSearch(json.results))
     }
-    console.log("name",name)
-    console.log("search",search)
+
     useEffect(() => {
     searching()
     }, [url])
